@@ -31,12 +31,22 @@
           alt="Quiz Bild"
         />
         <h2 class="mb-4" id="question">FRAGE</h2>
-        <div class="d-grid gap-3">
-          <button class="btn btn-answer" id="answer-1">ANTWORT 1</button>
-          <button class="btn btn-answer" id="answer-2">ANTWORT 2</button>
-          <button class="btn btn-answer" id="answer-3">ANTWORT 3</button>
-          <button class="btn btn-answer" id="answer-4">ANTWORT 4</button>
+        <div class="d-grid gap-3 mb-4">
+          <button class="btn btn-answer" id="answer-1" onclick="answer(0)">
+            ANTWORT 1
+          </button>
+          <button class="btn btn-answer" id="answer-2" onclick="answer(1)">
+            ANTWORT 2
+          </button>
+          <button class="btn btn-answer" id="answer-3" onclick="answer(2)">
+            ANTWORT 3
+          </button>
+          <button class="btn btn-answer" id="answer-4" onclick="answer(3)">
+            ANTWORT 4
+          </button>
         </div>
+
+        <span id="result"></span>
 
         <hr class="my-4 border-secondary" />
 
@@ -45,7 +55,14 @@
             >Frage <b id="questions-number"></b> von
             <b id="questions-length"></b
           ></span>
-          <button class="btn btn-outline-light">Nächste Frage</button>
+          <button
+            onclick="nextQuestion()"
+            class="btn btn-outline-light"
+            id="next-button"
+            disabled
+          >
+            Nächste Frage
+          </button>
         </div>
       </div>
     </main>

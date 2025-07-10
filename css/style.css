@@ -15,6 +15,17 @@ main .quiz-card div .btn-answer:hover {
   background-color: #444;
 }
 
+.btn-correct {
+  background-color: #28a745 !important; /* Bootstrap-Grün */
+  color: white !important;
+}
+
+.btn-wrong {
+  background-color: #dc3545 !important; /* Bootstrap-Rot */
+  color: white !important;
+}
+
+
 footer {
   left: 0;
   bottom: 0;
