@@ -1,5 +1,7 @@
 let current = 0;
 let score = 0;
+let correctSound = new Audio("./assets/audio/correct.mp3");
+let wrongSound = new Audio("./assets/audio/wrong.mp3");
 
 function init() {
   showQuiz();
@@ -38,8 +40,10 @@ function answer(number) {
 
   if (selectedAnswer === correctAnswerText) {
     correctAnswer(number);
+    correctSound.play();
   } else {
     wrongAnswer(number, correctAnswerText);
+    wrongSound.play();
   }
 }
 
@@ -54,7 +58,6 @@ function correctAnswer(selectedIndex) {
   btn.classList.remove("btn-dark");
   btn.classList.add("btn-success");
   score++;
-
   disableAllButtons();
 }
 
@@ -76,7 +79,6 @@ function wrongAnswer(selectedIndex, correctText) {
     correctBtn.classList.remove("btn-dark");
     correctBtn.classList.add("btn-success");
   }
-
   disableAllButtons();
 }
 
@@ -152,18 +154,15 @@ function showEndScreen() {
 function resetQuiz() {
   current = 0;
   score = 0;
-
-  // Zeige wieder das Quiz
   document.getElementById("quiz-container").classList.remove("d-none");
   document.getElementById("end-screen").classList.add("d-none");
-
-  // Setze Anzeige zurück
   document.getElementById("next-button").disabled = true;
   document.getElementById("result").innerHTML = "";
   document
     .getElementById("result")
     .classList.remove("text-success", "text-danger");
-
   removeAllclassList();
   showQuiz();
+  updateProgressBar();
 }
+

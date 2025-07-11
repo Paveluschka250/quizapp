@@ -58,5 +58,11 @@ let quiz = [
     "answers": ["Michelangelo", "Pablo Picasso", "Leonardo da Vinci", "Vincent van Gogh"],
     "correctAnswer": "Leonardo da Vinci",
     "picture": "./assets/img/pic-10.jpg"
+  },
+  {
+    "question": "Wer malte die Mona Lisa?",
+    "answers": ["Michelangelo", "Pablo Picasso", "Leonardo da Vinci", "Vincent van Gogh"],
+    "correctAnswer": "Leonardo da Vinci",
+    "picture": "./assets/img/pic-10.jpg"
   }
 ];
