@@ -22,6 +22,15 @@ function showQuiz() {
   }
 }
 
+function updateProgressBar() {
+  const progressBar = document.getElementById("progress-bar");
+  const percent = Math.round((current / quiz.length) * 100);
+
+  progressBar.style.width = `${percent}%`;
+  progressBar.setAttribute("aria-valuenow", percent);
+  progressBar.innerText = `${percent}%`;
+}
+
 function answer(number) {
   let currentQuestion = quiz[current];
   let selectedAnswer = currentQuestion.answers[number];
@@ -98,6 +107,7 @@ function nextQuestion() {
   }
 
   document.getElementById("next-button").disabled = true;
+  updateProgressBar();
   removeAllclassList();
   showQuiz();
 }
