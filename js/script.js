@@ -25,9 +25,8 @@ function showQuiz() {
 }
 
 function updateProgressBar() {
-  const progressBar = document.getElementById("progress-bar");
-  const percent = Math.round((current / quiz.length) * 100);
-
+  let progressBar = document.getElementById("progress-bar");
+  let percent = Math.round((current / quiz.length) * 100);
   progressBar.style.width = `${percent}%`;
   progressBar.setAttribute("aria-valuenow", percent);
   progressBar.innerText = `${percent}%`;
@@ -37,7 +36,6 @@ function answer(number) {
   let currentQuestion = quiz[current];
   let selectedAnswer = currentQuestion.answers[number];
   let correctAnswerText = currentQuestion.correctAnswer;
-
   if (selectedAnswer === correctAnswerText) {
     correctAnswer(number);
     correctSound.play();
@@ -53,7 +51,6 @@ function correctAnswer(selectedIndex) {
   result.classList.remove("text-danger");
   result.classList.add("text-success");
   result.innerHTML = correctAnswerText();
-
   let btn = document.getElementById(`answer-${selectedIndex + 1}`);
   btn.classList.remove("btn-dark");
   btn.classList.add("btn-success");
@@ -67,11 +64,9 @@ function wrongAnswer(selectedIndex, correctText) {
   result.classList.remove("text-success");
   result.classList.add("text-danger");
   result.innerHTML = wrongAnswerText();
-
   let wrongBtn = document.getElementById(`answer-${selectedIndex + 1}`);
   wrongBtn.classList.remove("btn-dark");
   wrongBtn.classList.add("btn-danger");
-
   let currentAnswers = quiz[current].answers;
   let correctIndex = currentAnswers.indexOf(correctText);
   if (correctIndex !== -1) {
@@ -102,12 +97,10 @@ function disableAllButtons() {
 
 function nextQuestion() {
   current++;
-
   if (current >= quiz.length) {
     showEndScreen();
     return;
   }
-
   document.getElementById("next-button").disabled = true;
   updateProgressBar();
   removeAllclassList();
@@ -121,7 +114,6 @@ function removeAllclassList() {
     btn.classList.add("btn-dark");
     btn.disabled = false;
   }
-
   let result = document.getElementById("result");
   result.innerHTML = "";
   result.classList.remove("text-success", "text-danger");
@@ -130,10 +122,8 @@ function removeAllclassList() {
 function showEndScreen() {
   document.getElementById("quiz-container").classList.add("d-none");
   document.getElementById("end-screen").classList.remove("d-none");
-
-  const total = quiz.length;
-  const percentage = (score / total) * 100;
-
+  let total = quiz.length;
+  let percentage = (score / total) * 100;
   let message = "";
   if (percentage === 100) {
     message = "Perfekt! Du hast alle Fragen richtig beantwortet 🎉";
@@ -144,7 +134,6 @@ function showEndScreen() {
   } else {
     message = "Da geht noch was... versuch's gleich nochmal! 😅";
   }
-
   document.getElementById(
     "end-result-text"
   ).innerHTML = `Du hast <strong>${score}</strong> von <strong>${total}</strong> Fragen richtig beantwortet.`;
@@ -165,4 +154,3 @@ function resetQuiz() {
   showQuiz();
   updateProgressBar();
 }
-
